@@ -1,34 +1,56 @@
-<h1>タスク一覧</h1>
+<div class="task-layout">
 
-<% if notice %>
-  <p style="color: green;"><%= notice %></p>
-<% end %>
+  <aside class="sidebar">
+    <h2>Task</h2>
 
-<%= link_to "新しいタスクを追加", new_task_path %>
+    <ul>
+      <li>ホーム</li>
+      <li>タスク</li>
+      <li>カレンダー</li>
+      <li>設定</li>
+    </ul>
+  </aside>
 
-<table>
-  <thead>
-    <tr>
-      <th>タイトル</th>
-      <th>優先度</th>
-      <th>期限</th>
-      <th>完了</th>
-      <th>操作</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.priority_label %></td>
-        <td><%= task.due_date %></td>
-        <td><%= task.done ? "✅" : "❌" %></td>
-        <td>
-          <%= link_to "詳細", task_path(task) %>
-          <%= link_to "編集", edit_task_path(task) %>
-          <%= link_to "削除", task_path(task), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" } %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <main class="task-main">
+
+    <div class="task-header">
+      <h1>タスク管理</h1>
+
+      <button>＋ タスク作成</button>
+    </div>
+
+    <div class="task-columns">
+
+      <div class="task-column high">
+        <h2>高</h2>
+
+        <% @high_tasks.each do |task| %>
+          <div class="task-card">
+            <p><%= task.title %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="task-column medium">
+        <h2>中</h2>
+
+        <% @medium_tasks.each do |task| %>
+          <div class="task-card">
+            <p><%= task.title %></p>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="task-column low">
+        <h2>低</h2>
+
+        <% @low_tasks.each do |task| %>
+          <div class="task-card">
+            <p><%= task.title %></p>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  </main>
+</div>
