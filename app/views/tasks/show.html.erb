@@ -1,0 +1,10 @@
+<h1>タスク詳細</h1>
+
+<p><strong>タイトル:</strong> <%= @task.title %></p>
+<p><strong>説明:</strong> <%= @task.description %></p>
+<p><strong>優先度:</strong> <%= @task.priority_label %></p>
+<p><strong>期限:</strong> <%= @task.due_date %></p>
+<p><strong>完了:</strong> <%= @task.done ? "✅ 完了" : "❌ 未完了" %></p>
+
+<%= link_to "編集", edit_task_path(@task) %>
+<%= link_to "一覧に戻る", tasks_path %>
